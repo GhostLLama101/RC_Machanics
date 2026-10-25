@@ -31,4 +31,8 @@ public abstract class CloneStateMachine<T>: MonoBehaviour where T : CloneStateMa
         CurrentState.EnterState((T)this);
     }
 
+    public void Movement(CloneState<T> Clone)
+    {
+        // this is where we will add the clone movement
+    }
 }
