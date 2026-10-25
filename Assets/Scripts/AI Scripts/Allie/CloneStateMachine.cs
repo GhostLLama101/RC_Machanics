@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class CloneStateMachine<T>: MonoBehaviour where T : CloneStateMachine<T>
 {
@@ -13,6 +14,15 @@ public abstract class CloneStateMachine<T>: MonoBehaviour where T : CloneStateMa
     
     public virtual CloneState<T> InitialState => idlestate;
     public CloneState<T> CurrentState;
+    
+    public NavMeshAgent agent;
+
+
+    public Camera cam;
+    
+    private void Awake()
+    {
+    }
 
     protected virtual void Start()
     {
@@ -22,6 +32,7 @@ public abstract class CloneStateMachine<T>: MonoBehaviour where T : CloneStateMa
     protected virtual void Update()
     {
         CurrentState?.UpdateState((T)this);
+        GoTwards();
     }
 
     public void ChangeState(CloneState<T> newState)
@@ -31,8 +42,18 @@ public abstract class CloneStateMachine<T>: MonoBehaviour where T : CloneStateMa
         CurrentState.EnterState((T)this);
     }
 
-    public void Movement(CloneState<T> Clone)
+    public void GoTwards() // might need to become a helper in the future
     {
-        // this is where we will add the clone movement
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+           {
+               this.agent.SetDestination(hit.point);
+           }
+        }
+        // this takes in a clone came aobject an will set the destination of what is imputed
+         // this will be based on the button clicked
     }
 }
