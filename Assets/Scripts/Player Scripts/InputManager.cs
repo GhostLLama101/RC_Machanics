@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
         _playerInput = new PlayerInputs();
         onfoot = _playerInput.OnFoot;
         motor = GetComponent<PlayerMovement>();
+        onfoot.Jump.performed += ctx => motor.ProcessJump();
 
     }
 
@@ -24,12 +25,12 @@ public class InputManager : MonoBehaviour
         motor.ProcessMove(onfoot.Movement.ReadValue<Vector2>());
     }
 
-    void onEnable()
+    void OnEnable()
     {
         onfoot.Enable();
     }
 
-    void onDisable()
+    void OnDisable()
     {
         onfoot.Disable();
     }

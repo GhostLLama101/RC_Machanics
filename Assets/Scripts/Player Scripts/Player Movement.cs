@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,7 +8,10 @@ public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 playerVelocity;
+    private bool isGrounded;
     public float speed = 5f;
+    public float gravity = -9.8f;
+    public float jumpHeight = 3f;
 
     void Start()
     {
@@ -16,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        
+        isGrounded = controller.isGrounded;
     }
 
     public void ProcessMove(Vector2 input)
@@ -25,5 +29,20 @@ public class PlayerMovement : MonoBehaviour
         moveDirection.x = input.x;
         moveDirection.z = input.y;
         controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+        playerVelocity.y += gravity * Time.deltaTime;
+        if (isGrounded && playerVelocity.y < 0)
+        {
+            playerVelocity.y = -2f;
+        }
+        controller.Move(playerVelocity * Time.deltaTime);
+        Debug.Log(playerVelocity.y);
+    }
+
+    public void ProcessJump()
+    {
+        if (isGrounded)
+        {
+            playerVelocity.y = math.sqrt(jumpHeight * -3.0f * gravity);
+        }
     }
 }
