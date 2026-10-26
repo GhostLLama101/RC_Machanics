@@ -27,8 +27,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         HandleMovement(_rb);
-        HandleJump(_rb);
-        HandleMouse(_rb);
+        //HandleJump(_rb);
+        //HandleMouse(_rb);
     }
 
     void FixedUpdate()
