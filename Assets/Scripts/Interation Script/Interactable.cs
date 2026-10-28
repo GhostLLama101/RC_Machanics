@@ -10,6 +10,6 @@ public abstract class Interactable : MonoBehaviour
     }
     protected virtual void Interact()
     {
-        // nothing in here
+        Debug.Log("Interacted with" + promptMessage);
     }
 }
