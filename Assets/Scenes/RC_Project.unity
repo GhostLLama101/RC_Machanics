@@ -1365,7 +1365,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CloneSniper
   agent: {fileID: 1641873724}
-  cam: {fileID: 556090942}
 --- !u!1 &1669810836
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,7 +1544,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 64
-  distance: 3
+  distance: 15
 --- !u!114 &1669810848
 MonoBehaviour:
   m_ObjectHideFlags: 0

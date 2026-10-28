@@ -8,10 +8,7 @@ public class CloneSniper : CloneStateMachine<CloneSniper>
 
     protected override void Start()
     {
-        // Auto-grab references so you don't have to assign them manually
         if (agent == null) agent = GetComponent<NavMeshAgent>();
-        if (cam == null) cam = Camera.main;
-
         base.Start(); // enters the initial state
     }
 

@@ -10,12 +10,18 @@ public class PlayerInteract : MonoBehaviour
 
     private PlayerUI playerUI;
     private InputManager inputManager;
+    
+    private IClone selected;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         cam = GetComponent<PlayerLook>().cam;
         playerUI = GetComponent<PlayerUI>();
         inputManager = GetComponent<InputManager>();
+        
+        // make a function to get all clones by types on your team and it should put them in a list.
+
+        selected = FindFirstObjectByType<CloneSniper>();
     }
 
     // Update is called once per frame
@@ -34,7 +40,7 @@ public class PlayerInteract : MonoBehaviour
                 playerUI.updateText(interactable.promptMessage);
                 if (inputManager.onfoot.Interact.triggered)
                 {
-                    interactable.BaseInteract();
+                    interactable.BaseInteract(hitInfo, selected);
                 }
             }
         }
