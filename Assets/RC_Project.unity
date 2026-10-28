@@ -1243,6 +1243,7 @@ GameObject:
   - component: {fileID: 1669810842}
   - component: {fileID: 1669810844}
   - component: {fileID: 1669810846}
+  - component: {fileID: 1669810847}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -1390,6 +1391,22 @@ MonoBehaviour:
   cam: {fileID: 556090942}
   xSensitivity: 30
   ySensitivity: 30
+--- !u!114 &1669810847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669810836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac727406a12ba6a47a2fe36bad5c5cf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
+  mask:
+    serializedVersion: 2
+    m_Bits: 64
+  distance: 3
 --- !u!1001 &1745582628
 PrefabInstance:
   m_ObjectHideFlags: 0
