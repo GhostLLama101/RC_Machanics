@@ -8,15 +8,14 @@ public class PlayerInteract : MonoBehaviour
 {
     private Camera cam;
     [SerializeField] private new LayerMask mask;
-
     [SerializeField] private float distance = 3;
     
-    List<IClone> clones = new List<IClone>(); // list to hold the clone objects that you will be 
+    //List<IClone> clones = new List<IClone>(); 
     [SerializeField] private int cursor = 0;
+    [SerializeField] private List<MonoBehaviour> cloneObjects; // list to hold the clone objects that you will be 
     
     private PlayerUI playerUI;
     private InputManager inputManager;
-    
     private IClone selected;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,10 +23,6 @@ public class PlayerInteract : MonoBehaviour
         cam = GetComponent<PlayerLook>().cam;
         playerUI = GetComponent<PlayerUI>();
         inputManager = GetComponent<InputManager>();
-        
-        // make a function to get all clones by types on your team and it should put them in a list.
-
-        selected = FindFirstObjectByType<CloneSniper>();
     }
 
     // Update is called once per frame
@@ -46,6 +41,7 @@ public class PlayerInteract : MonoBehaviour
                 playerUI.updateText(interactable.promptMessage);
                 if (inputManager.onfoot.Interact.triggered)
                 {
+                    SelectClone();
                     interactable.BaseInteract(hitInfo, selected);
                 }
             }
@@ -54,15 +50,14 @@ public class PlayerInteract : MonoBehaviour
     
     public void SelectClone()
     {
-        if (clones.Count == 0) throw new MissingComponentException("No clone found");
+        if (cloneObjects.Count == 0) throw new MissingComponentException("No clone found");
         
-        selected = clones[cursor];
+        selected = cloneObjects[cursor] as IClone;
         
         cursor++;
-        if (clones.Count > cursor) // if the cursor position is the same as the size then go to the front of the list
+        if (cursor >= cloneObjects.Count) // if the cursor position is the same as the size then go to the front of the list
         {
             cursor = 0;
         } 
-        
     }
 }
