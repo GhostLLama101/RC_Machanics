@@ -16,10 +16,6 @@ public abstract class CloneStateMachine<T>: MonoBehaviour , IClone where T : Clo
     public CloneState<T> CurrentState;
     
     public NavMeshAgent agent;
-    
-    //public Camera cam;
-  
-
     protected virtual void Start()
     {
        ChangeState(InitialState);

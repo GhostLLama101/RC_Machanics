@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using PlasticGui.WebApi.Responses;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +10,10 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private new LayerMask mask;
 
     [SerializeField] private float distance = 3;
-
+    
+    List<IClone> clones = new List<IClone>(); // list to hold the clone objects that you will be 
+    [SerializeField] private int cursor = 0;
+    
     private PlayerUI playerUI;
     private InputManager inputManager;
     
@@ -44,5 +50,19 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
         }
+    }
+    
+    public void SelectClone()
+    {
+        if (clones.Count == 0) throw new MissingComponentException("No clone found");
+        
+        selected = clones[cursor];
+        
+        cursor++;
+        if (clones.Count > cursor) // if the cursor position is the same as the size then go to the front of the list
+        {
+            cursor = 0;
+        } 
+        
     }
 }
