@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class CloneAssault : CloneStateMachine<CloneAssault>
+public class BaseCloneAssault : BaseCloneStateMachine<BaseCloneAssault>
 {
     // Uses the base class default (idlestate). Override to start elsewhere:
     // public override CloneState<GuardClone> InitialState => runningstate;

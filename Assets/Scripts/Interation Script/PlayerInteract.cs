@@ -1,8 +1,5 @@
 using System.Collections.Generic;
-using PlasticGui.WebApi.Responses;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -12,11 +9,11 @@ public class PlayerInteract : MonoBehaviour
     
     //List<IClone> clones = new List<IClone>(); 
     [SerializeField] private int cursor = 0;
-    [SerializeField] private List<MonoBehaviour> cloneObjects; // list to hold the clone objects that you will be 
+    [SerializeField] private List<BaseClone> cloneObjects; // list to hold the clone objects that you will be 
     
     private PlayerUI playerUI;
     private InputManager inputManager;
-    private IClone selected;
+    private BaseClone selected;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -52,7 +49,7 @@ public class PlayerInteract : MonoBehaviour
     {
         if (cloneObjects.Count == 0) throw new MissingComponentException("No clone found");
         
-        selected = cloneObjects[cursor] as IClone;
+        selected = cloneObjects[cursor];
         
         cursor++;
         if (cursor >= cloneObjects.Count) // if the cursor position is the same as the size then go to the front of the list

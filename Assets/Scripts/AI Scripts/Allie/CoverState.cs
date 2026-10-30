@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CoverState<T> : CloneState<T> where T: CloneStateMachine<T>
+public class CoverState<T> : CloneState<T> where T: BaseCloneStateMachine<T>
 {
     // this is used for when they go behind cover they should be in the cover state
     // they should go back to the fallow state if recalled

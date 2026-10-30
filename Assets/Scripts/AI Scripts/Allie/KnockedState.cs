@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class KnockedState<T> :  CloneState<T> where T : CloneStateMachine<T>
+public class KnockedState<T> :  CloneState<T> where T : BaseCloneStateMachine<T>
 {
     // do the idle state that is in this
 

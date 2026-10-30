@@ -1,10 +1,8 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class CloneSniper : CloneStateMachine<CloneSniper>
+public class BaseCloneSniper : BaseCloneStateMachine<BaseCloneSniper>
 {
-    // Uses the base class default (idlestate). Override to start elsewhere:
-    // public override CloneState<GuardClone> InitialState => runningstate;
 
     protected override void Start()
     {

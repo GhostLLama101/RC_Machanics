@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class CloneStateMachine<T>: MonoBehaviour , IClone where T : CloneStateMachine<T>
+public abstract class BaseCloneStateMachine<T>: BaseClone where T : BaseCloneStateMachine<T>
 {
     
     public IdleState<T> idlestate =  new IdleState<T>();
@@ -15,7 +15,7 @@ public abstract class CloneStateMachine<T>: MonoBehaviour , IClone where T : Clo
     public virtual CloneState<T> InitialState => idlestate;
     public CloneState<T> CurrentState;
     
-    public NavMeshAgent agent;
+    
     protected virtual void Start()
     {
        ChangeState(InitialState);
@@ -34,8 +34,8 @@ public abstract class CloneStateMachine<T>: MonoBehaviour , IClone where T : Clo
         CurrentState.EnterState((T)this);
     }
 
-    public void MoveTo(Vector3 position)
+    /*public void MoveTo(Vector3 position)
     {
         agent.SetDestination(position);
-    }
+    }*/
 }

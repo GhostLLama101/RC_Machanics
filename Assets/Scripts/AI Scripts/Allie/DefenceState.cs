@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DefenceState<T> : CloneState<T> where T : CloneStateMachine<T>
+public class DefenceState<T> : CloneState<T> where T : BaseCloneStateMachine<T>
 {
     public override void EnterState(T clone)
     {
